@@ -12,10 +12,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingScreen from '../components/LoadingScreen'
 import Loader from '../components/Loader'
 import Post from '../components/Post'
+import Image from 'next/image'
 
 Model.setAppElement('#__next')
 
-export default function home(){
+export default function Home(){
     const { user, loading, logout } = useAuth();
     const router = useRouter();
     const [PostDetails, setPostDetails] = useState(null);
@@ -135,7 +136,7 @@ export default function home(){
                                 <div key={user.UserDetail.username} className="text-white rounded-lg bg-gray-850 my-3 p-3">
                                   <Link href={user.UserDetail.username}><a>
                                     <div className="flex items-center w-full">
-                                      <img src={user.UserDetail.profileimage} className="h-8 w-8 rounded-md mr-2"/>
+                                      <Image src={user.UserDetail.profileimage} className="h-8 w-8 rounded-md mr-2"/>
                                       <p className="uppercase font-semibold">@{user.UserDetail.username}</p>
                                     </div>
                                     <div className="p-2 rounded-lg mt-2 bg-gray-750">
