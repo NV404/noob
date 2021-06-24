@@ -124,27 +124,33 @@ export default function home(){
                                 }               
                             </div>
                         </div>
-                        {/* Explore profile section */}
-                        {UserDetails ? 
-                        <div className="hidden py-8 md:max-w-lg md:block md:w-4/12">
-                          <div className="hidden bg-gray-750 w-full rounded-lg p-3 md:flex md:flex-col">
-                            <p className="font-semibold text-white">Explore other profiles</p>
-                            {UserDetails.map(user => (
-                              <div key={user.UserDetail.username} className="text-white rounded-lg bg-gray-850 my-3 p-3">
-                                <Link href={user.UserDetail.username}><a>
-                                  <div className="flex items-center w-full">
-                                    <img src={user.UserDetail.profileimage} className="h-8 w-8 rounded-md mr-2"/>
-                                    <p className="uppercase font-semibold">@{user.UserDetail.username}</p>
-                                  </div>
-                                  <div className="p-2 rounded-lg mt-2 bg-gray-750">
-                                    <p>{user.UserDetail.bio}</p>
-                                  </div>
-                                </a></Link>
-                              </div>
-                            ))}
+                        
+                        {/* right section */}
+                          {UserDetails ?
+                          // Explore profile section
+                          <div className="hidden py-8 md:max-w-lg md:block md:w-4/12">
+                            <div className="hidden bg-gray-750 w-full rounded-lg p-3 md:flex md:flex-col">
+                              <p className="font-semibold text-white">Explore other profiles</p>
+                              {UserDetails.map(user => (
+                                <div key={user.UserDetail.username} className="text-white rounded-lg bg-gray-850 my-3 p-3">
+                                  <Link href={user.UserDetail.username}><a>
+                                    <div className="flex items-center w-full">
+                                      <img src={user.UserDetail.profileimage} className="h-8 w-8 rounded-md mr-2"/>
+                                      <p className="uppercase font-semibold">@{user.UserDetail.username}</p>
+                                    </div>
+                                    <div className="p-2 rounded-lg mt-2 bg-gray-750">
+                                      <p>{user.UserDetail.bio}</p>
+                                    </div>
+                                  </a></Link>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="hidden text-white bg-gray-750 w-full mt-3 rounded-lg p-3 md:flex md:flex-col">
+                              <p className="font-bold text-center">🌟 Check out this project on Github 🌟</p>
+                              <Link href="https://github.com/NV404/Noob"><a><div className="mt-2 rounded-lg bg-gray-850 w-full p-2 text-center"><p>Github Link</p></div></a></Link>
+                            </div>
                           </div>
-                          </div>
-                        : null }
+                          : null }
                         </div>
                 : gotologin() }
                 </>

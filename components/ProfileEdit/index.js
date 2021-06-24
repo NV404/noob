@@ -23,7 +23,6 @@ export default function ProfileEdit(){
                     setUserProfile(snapshot.data());
                     setName(snapshot.data().name)
                     setBio(snapshot.data().bio)
-                    console.log(snapshot.data())
                 });
         }
     }, [router])

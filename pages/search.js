@@ -21,7 +21,6 @@ export default function search(){
         setLoadingResults(true)
         setResult(null)
         if(term != null){
-            console.log(term)
             db.collection('users')
             .orderBy("username")
             .startAt(term)
@@ -33,7 +32,6 @@ export default function search(){
                     post: docs.data()
                 })))
                 setResult(tempResult)
-                console.log(tempResult);
                 setLoadingResults(false)
             })
         }

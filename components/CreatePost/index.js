@@ -12,6 +12,7 @@ export default function createpost(){
     const [ImagePreview, setImagePreview] = useState(null);
     const [Progress, setProgress] = useState(0)
     const [uploadError, setUploadError] = useState(false)
+    const [disable, setdisable] = useState(false);
     var randomstring = require("randomstring");
     const router = useRouter()
 
@@ -30,6 +31,7 @@ export default function createpost(){
 
     // Profile image update function
     const UploadPost = (e) => {
+        setdisable(true)
         e.preventDefault();
         if(Image != null && Caption != null){
             var randomtxt = randomstring.generate(10);
@@ -57,7 +59,6 @@ export default function createpost(){
                                 username: user.displayName,
                                 caption: Caption,
                             }).then((snap) => {
-                                console.log(snap.id)
                                 db.collection("posts")
                                 .doc(snap.id)
                                 .collection("likes")
@@ -74,6 +75,7 @@ export default function createpost(){
                                 })
                             })
                             setImage(null);
+                            setdisable(false)
                             setImagePreview(null);
                             setProgress(0);
                             router.push("/home");
@@ -81,6 +83,7 @@ export default function createpost(){
                 },
                 (error) => {
                     // Handle unsuccessful uploads
+                    setdisable(false)
                 }
             );
         }
@@ -137,7 +140,7 @@ export default function createpost(){
                         {uploadError ? <p className="text-red-700 text-center font-semibold">Image and Bio is required.</p> : null}
                     </div>
                     <div>
-                        <button onClick={UploadPost} className="w-full bg-purple-550 text-center rounded-lg py-3 font-semibold">Upload</button>
+                        <button disabled={disable} onClick={UploadPost} className="w-full bg-purple-550 text-center rounded-lg py-3 font-semibold disabled:opacity-50 disabled:cursor-not-allowed">Upload</button>
                     </div>
                 </form>
             </div>

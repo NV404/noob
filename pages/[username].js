@@ -46,9 +46,6 @@ export default function Profile() {
                     post: doc.data(),
                   }));
                   setPostDetails(tempPosts);
-                  if(PostDetails){
-                      console.log(PostDetails)
-                  }
                 });
         }
     }, [router])
