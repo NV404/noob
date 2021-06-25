@@ -3,9 +3,8 @@ import { db } from '../../lib/firebase'
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../lib/auth'
 import firebase from 'firebase/app'
-import Image from 'next/image'
 
-export default function Post({
+export default function post({
   id,
   username,
   imageUrl,
@@ -126,13 +125,13 @@ export default function Post({
         <div className="w-full bg-gray-750 my-3 p-3 rounded-lg text-white break-words">
             <Link href={`/${username}`}><a>
                 <div className="flex">
-                    {Profileurl ? <Image src={Profileurl} className="h-8 w-8 rounded-md mr-2"/> : null}
+                    {Profileurl ? <img src={Profileurl} className="h-8 w-8 rounded-md mr-2"/> : null}
                     <p className="font-semibold">{username}</p>
                 </div>
             </a></Link>
             <div className="flex justify-center">
                 {imageLoaded ?  null : <div className="w-full h-80 animate-pulse rounded-lg bg-purple-550 my-1"></div>}
-                <Image src={imageUrl} className={`max-w-full rounded-lg my-1 max-h-96 ${imageLoaded ? null : "hidden"}`} onLoad={() => setimageLoaded(true)}/>
+                <img src={imageUrl} className={`max-w-full rounded-lg my-1 max-h-96 ${imageLoaded ? null : "hidden"}`} onLoad={() => setimageLoaded(true)}/>
             </div>
 
             <div className="w-full flex">

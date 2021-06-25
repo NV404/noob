@@ -5,7 +5,6 @@ import Signup from './signup'
 import { useRouter } from 'next/router'
 import { useAuth } from '../lib/auth'
 import LoadingScreen from '../components/LoadingScreen'
-import Image from 'next/image'
 
 // select next div
 Model.setAppElement("#__next");
@@ -30,7 +29,7 @@ export default function Home() {
         <div className='w-screen h-screen flex flex-col justify-between py-14 items-center md:flex-row-reverse md:py-0'>
           {/* Right or top section */}
           <div className="text-white w-full px-12 flex flex-col h-3/6 justify-evenly md:w-3/6 md:h-2/6">
-            <Image src="/logo.png" className="h-12 w-12" />
+            <img src="/logo.png" className="h-12 w-12" />
             <h2 className="text-2xl font-bold my-5">Join Noob Today</h2>
             <div>
               <Link href="/?signup=true" as="/signup"><a><div className="w-full py-3 bg-purple-550 text-center text-xl font-semibold rounded-lg mb-3 md:max-w-xs">Sign up</div></a></Link>
