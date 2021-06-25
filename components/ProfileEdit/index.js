@@ -9,7 +9,7 @@ export default function ProfileEdit(){
     const { user, logout } = useAuth();
     const [name, setName] = useState(null)
     const [bio, setBio] = useState(null)
-    const [Image, setImage] = useState(null);
+    const [image, setImage] = useState(null);
     const [ImagePreview, setImagePreview] = useState(null);
     const [Progress, setProgress] = useState(0);
     var randomstring = require("randomstring");
@@ -47,7 +47,7 @@ export default function ProfileEdit(){
     const imageupload = (e) => {
         e.preventDefault();
         var randomtxt = randomstring.generate(10);
-        var uploadTask = storage.ref(`ProfileImages/${randomtxt+Image.name}`).put(Image);
+        var uploadTask = storage.ref(`ProfileImages/${randomtxt+image.name}`).put(image);
         uploadTask.on('state_changed',
             (snapshot) => {
 
@@ -63,7 +63,7 @@ export default function ProfileEdit(){
             () => {
                 storage
                     .ref("ProfileImages")
-                    .child(randomtxt+Image.name)
+                    .child(randomtxt+image.name)
                     .getDownloadURL()
                     .then((url) => {
                         auth.currentUser.updateProfile({
@@ -99,22 +99,23 @@ export default function ProfileEdit(){
     return(
         <>
             <div className="h-screen w-screen overflow-scroll flex flex-col p-8 bg-gray-850 rounded-lg text-white md:max-w-md md:h-auto">
-                {/* header */}
-                <div className="flex justify-between items-center">
-                    <div className="flex items-center">
-                        <Link href="/home"><a><Image src="/logo.png" className="h-10 w-10"/></a></Link>
-                        <p className="font-bold text-2xl pl-2">Edit Profile</p>
+            {user ? <>
+                    {/* header */}
+                    <div className="flex justify-between items-center">
+                        <div className="flex items-center">
+                            <Link href="/home"><a><div className="h-10 w-10 relative"><Image src="/logo.png" layout="fill"/></div></a></Link>
+                            <p className="font-bold text-2xl pl-2">Edit Profile</p>
+                        </div>
+                        <Link href={user.displayName}><a><div className="relative h-6 w-6"><Image src="/cross.svg" layout="fill" /></div></a></Link>
                     </div>
-                    <Link href={user.displayName}><a><Image src="/cross.svg" /></a></Link>
-                </div>
-                {user ? 
+
                     <div className="mt-8">
                         <form>
                             <div className="mb-5">
                                 <div className="mb-5 flex justify-evenly items-center">
-                                    <Image src={user.photoURL} className="rounded-lg h-20"/>
+                                    <div className="rounded-lg h-20 w-20 overflow-hidden relative"><Image layout="fill" src={user.photoURL}/></div>
                                     {ImagePreview ? <>
-                                        <Image src={ImagePreview} className="rounded-lg h-20 w-20"/>
+                                        <div className="rounded-lg h-20 w-20 overflow-hidden relative"><Image layout="fill" src={ImagePreview}/></div>
                                     </> : null}
                                 </div>
                                 {/* If any image is selected it will change button Select button to save button */}
@@ -147,6 +148,7 @@ export default function ProfileEdit(){
                             </div>
                         </form>
                     </div>
+                </>
                 : null }
 
             </div>

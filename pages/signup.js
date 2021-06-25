@@ -60,9 +60,9 @@ export default function Signup(){
             <>
             {user ? gotohome() : 
                 <div className="w-screen h-screen flex justify-center items-center">
-                    <div className="w-full h-full px-10 flex flex-col justify-evenly text-white bg-gray-850 md:max-w-2xl md:h-4/6 md:items-center md:rounded-lg">
+                    <div className="w-full h-full px-10 flex flex-col justify-evenly text-white bg-gray-850 md:max-w-2xl md:h-auto md:py-5 md:items-center md:rounded-lg">
                         <div className="md:w-4/6">
-                        <Link href="/"><a className="w-10"><Image src="/logo.png" className="h-10 w-10" /></a></Link>
+                        <Link href="/"><a className="w-10"><div className="h-10 w-10 relative"><Image src="/logo.png" layout="fill" /></div></a></Link>
                         <h1 className="font-bold text-4xl mt-5">Sign up</h1>
                         <form className="my-5" onSubmit={registeruser}>
                             <div>

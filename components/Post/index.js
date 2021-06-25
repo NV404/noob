@@ -126,13 +126,13 @@ export default function Post({
         <div className="w-full bg-gray-750 my-3 p-3 rounded-lg text-white break-words">
             <Link href={`/${username}`}><a>
                 <div className="flex">
-                    {Profileurl ? <Image src={Profileurl} className="h-8 w-8 rounded-md mr-2"/> : null}
+                    {Profileurl ? <div className="h-8 w-8 rounded-md overflow-hidden mr-2 relative"><Image src={Profileurl} layout="fill"/></div> : null}
                     <p className="font-semibold">{username}</p>
                 </div>
             </a></Link>
             <div className="flex justify-center">
                 {imageLoaded ?  null : <div className="w-full h-80 animate-pulse rounded-lg bg-purple-550 my-1"></div>}
-                <Image src={imageUrl} className={`max-w-full rounded-lg my-1 max-h-96 ${imageLoaded ? null : "hidden"}`} onLoad={() => setimageLoaded(true)}/>
+                <div className={`w-full relative h-60 overflow-hidden rounded-lg my-1 md:h-96 ${imageLoaded ? null : "hidden"}`}><Image src={imageUrl} layout="fill" objectFit="contain" onLoad={() => setimageLoaded(true)}/></div>
             </div>
 
             <div className="w-full flex">

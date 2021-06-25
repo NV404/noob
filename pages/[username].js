@@ -98,7 +98,9 @@ export default function Profile() {
                                 <div className="w-full my-6 py-6 px-6 text-white bg-gray-750 rounded-lg md:max-w-sm md:min-w-20">
                                     <div className="flex justify-between md:flex-col md:items-center">
                                         {imageLoaded ?  null : <div className="h-20 w-40 animate-pulse rounded-lg bg-purple-550 md:h-40 md:mx-8 lg:mx-14"></div>}
-                                        <Image src={UserProfile.profileimage} className={`h-20 rounded-lg md:h-40 md:mx-8 lg:mx-14 ${imageLoaded ? null : "hidden"} `} onLoad={() => setimageLoaded(true)} />
+                                        <div className={`h-20 w-28 overflow-hidden rounded-lg md:h-32 md:w-32 relative md:mx-8 lg:mx-14 ${imageLoaded ? null : "hidden"} `}>
+                                        <Image src={UserProfile.profileimage} layout="fill" onLoad={() => setimageLoaded(true)} />
+                                        </div>
                                         <div className="h-auto w-full text-center flex flex-col justify-center md:mt-4">
                                             <h1 className="text-xl font-bold uppercase">{UserProfile.name}</h1>
                                             <p className="text-sm">@{UserProfile.username}</p>
@@ -114,7 +116,7 @@ export default function Profile() {
                             </div>
 
                             {/* User feed */}
-                            <div className="w-3/6 max-w-lg">
+                            <div className="w-full max-w-lg">
                                 {PostDetails == null ? <Loader/> :
                                     <>
                                     {PostDetails.length != 0 ? 

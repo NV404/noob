@@ -30,6 +30,7 @@ export default function Login(){
             if (email.match(mailformat) && password.length >= 6) {
                 setloginshowerror(null);
                 login(email, password);
+                setdisable(false);
             }
             else {
                 setdisable(false);
@@ -63,7 +64,7 @@ export default function Login(){
                 <>
                 <div className="w-screen h-screen px-12 flex justify-center items-center">
                     <div className="w-full h-2/6 flex flex-col justify-evenly text-white md:max-w-sm">
-                        <Link href="/"><a className="w-10"><Image src="/logo.png" className="h-10 w-10" /></a></Link>
+                        <Link href="/"><a className="w-10"><div className="h-10 w-10 relative"><Image src="/logo.png" layout="fill" /></div></a></Link>
                         <h1 className="font-bold text-4xl mt-5">Log in to continue</h1>
 
                         {/* Login form */}
@@ -82,7 +83,7 @@ export default function Login(){
                         {/* input errors */}
                         <div className="mb-5">
                                 {loginshowerror ? loginshowerror : null}
-                                {errorMessage ? <>{setdisable(false)}<p className='text-center text-red-700 font-bold'>{errorMessage}</p></> : null}
+                                {errorMessage ? <><p className='text-center text-red-700 font-bold'>{errorMessage}</p></> : null}
                         </div>
                         <Link href="/login?signup=true" as="/signup"><a className="font-semibold underline text-center outline-none focus:text-purple-550"><p>Don’t have account? sign up</p></a></Link>
                     </div>

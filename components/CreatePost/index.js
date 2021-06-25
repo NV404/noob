@@ -9,7 +9,7 @@ import Image from 'next/image'
 export default function Createpost(){
     const {user} = useAuth()
     const [Caption, setCaption] = useState(null);
-    const [Image, setImage] = useState(null)
+    const [image, setImage] = useState(null)
     const [ImagePreview, setImagePreview] = useState(null);
     const [Progress, setProgress] = useState(0)
     const [uploadError, setUploadError] = useState(false)
@@ -34,9 +34,9 @@ export default function Createpost(){
     const UploadPost = (e) => {
         setdisable(true)
         e.preventDefault();
-        if(Image != null && Caption != null){
+        if(image != null && Caption != null){
             var randomtxt = randomstring.generate(10);
-            var uploadTask = storage.ref(`PostImages/${randomtxt+Image.name}`).put(Image);
+            var uploadTask = storage.ref(`PostImages/${randomtxt+image.name}`).put(image);
             uploadTask.on('state_changed',
                 (snapshot) => {
                     const progress = Math.round(
@@ -51,7 +51,7 @@ export default function Createpost(){
                 () => {
                     storage
                         .ref("PostImages")
-                        .child(randomtxt+Image.name)
+                        .child(randomtxt+image.name)
                         .getDownloadURL()
                         .then((url) => {
                             db.collection("posts").add({
@@ -100,10 +100,10 @@ export default function Createpost(){
             {/* header */}
             <div className="flex justify-between items-center">
                 <div className="flex items-center">
-                    <Link href="/home"><a><Image src="/logo.png" className="h-10 w-10"/></a></Link>
+                    <Link href="/home"><a><div className="h-10 w-10 relative"><Image src="/logo.png" layout="fill"/></div></a></Link>
                     <p className="font-bold text-2xl pl-2">Edit Profile</p>
                 </div>
-                <Link href="/home"><a><Image src="/cross.svg" /></a></Link>
+                <Link href="/home"><a></a></Link>
             </div>
 
             {/* Main Content */}
@@ -113,7 +113,7 @@ export default function Createpost(){
                         <div className="mb-5 flex justify-center items-center">
                             {/* image preview */}
                             {ImagePreview ? <>
-                                <Image src={ImagePreview} className="rounded-lg w-full"/>
+                                <div className="rounded-lg h-44 overflow-hidden w-full relative"><Image src={ImagePreview} layout="fill" objectFit="contain"/></div>
                             </> : null}
                         </div>
 
@@ -138,7 +138,7 @@ export default function Createpost(){
                         <textarea maxLength="100" rows="4" onChange={(e) => setCaption(e.target.value)} className="bg-transparent resize-none outline-none border-2 p-2 border-gray-750 rounded-lg w-full focus:border-purple-550" type="text" required/>
                     </div>
                     <div>
-                        {uploadError ? <p className="text-red-700 text-center font-semibold">Image and Bio is required.</p> : null}
+                        {uploadError ? <p className="text-red-700 text-center font-semibold">Image and Caption is required.</p> : null}
                     </div>
                     <div>
                         <button disabled={disable} onClick={UploadPost} className="w-full bg-purple-550 text-center rounded-lg py-3 font-semibold disabled:opacity-50 disabled:cursor-not-allowed">Upload</button>

@@ -136,7 +136,7 @@ export default function Home(){
                                 <div key={user.UserDetail.username} className="text-white rounded-lg bg-gray-850 my-3 p-3">
                                   <Link href={user.UserDetail.username}><a>
                                     <div className="flex items-center w-full">
-                                      <Image src={user.UserDetail.profileimage} className="h-8 w-8 rounded-md mr-2"/>
+                                      <div className="h-8 w-8 rounded-md overflow-hidden mr-2 relative"><Image src={user.UserDetail.profileimage} layout="fill"/></div>
                                       <p className="uppercase font-semibold">@{user.UserDetail.username}</p>
                                     </div>
                                     <div className="p-2 rounded-lg mt-2 bg-gray-750">

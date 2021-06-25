@@ -74,7 +74,7 @@ export default function Search(){
                                                 <Link href={post.post.username}><a>
                                                     <div className="w-full my-6 py-6 px-6 text-white bg-gray-750 rounded-lg md:max-w-md">
                                                         <div className="flex justify-between">
-                                                            <Image src={post.post.profileimage} className="h-20 rounded-lg" />
+                                                            <div className=" w-20 rounded-lg overflow-hidden relative" ><Image src={post.post.profileimage} layout="fill" objectFit="contain"/></div>
                                                             <div className="h-auto w-full text-center flex flex-col justify-center ">
                                                                 <h1 className="text-xl font-bold uppercase">{post.post.name}</h1>
                                                                 <p className="text-sm">@{post.post.username}</p>
