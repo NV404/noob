@@ -6,10 +6,11 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useAuth } from '../lib/auth'
 import Loading from '../components/LoadingScreen/index'
+import Image from 'next/image'
 
 Model.setAppElement("#__next");
 
-export default function login(){
+export default function Login(){
     const { login, user, loading, errorMessage } = useAuth();
     const [loginshowerror, setloginshowerror] = useState(null)
     const [email, setEmail] = useState(null);
@@ -62,7 +63,7 @@ export default function login(){
                 <>
                 <div className="w-screen h-screen px-12 flex justify-center items-center">
                     <div className="w-full h-2/6 flex flex-col justify-evenly text-white md:max-w-sm">
-                        <Link href="/"><a className="w-10"><img src="/logo.png" className="h-10 w-10" /></a></Link>
+                        <Link href="/"><a className="w-10"><Image src="/logo.png" className="h-10 w-10" /></a></Link>
                         <h1 className="font-bold text-4xl mt-5">Log in to continue</h1>
 
                         {/* Login form */}

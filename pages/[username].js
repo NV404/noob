@@ -13,6 +13,7 @@ import Model from 'react-modal'
 import ProfileEdit from '../components/ProfileEdit'
 import Post from '../components/Post'
 import Loader from '../components/Loader'
+import Image from 'next/image'
 
 Model.setAppElement('#__next')
 
@@ -97,7 +98,7 @@ export default function Profile() {
                                 <div className="w-full my-6 py-6 px-6 text-white bg-gray-750 rounded-lg md:max-w-sm md:min-w-20">
                                     <div className="flex justify-between md:flex-col md:items-center">
                                         {imageLoaded ?  null : <div className="h-20 w-40 animate-pulse rounded-lg bg-purple-550 md:h-40 md:mx-8 lg:mx-14"></div>}
-                                        <img src={UserProfile.profileimage} className={`h-20 rounded-lg md:h-40 md:mx-8 lg:mx-14 ${imageLoaded ? null : "hidden"} `} onLoad={() => setimageLoaded(true)} />
+                                        <Image src={UserProfile.profileimage} className={`h-20 rounded-lg md:h-40 md:mx-8 lg:mx-14 ${imageLoaded ? null : "hidden"} `} onLoad={() => setimageLoaded(true)} />
                                         <div className="h-auto w-full text-center flex flex-col justify-center md:mt-4">
                                             <h1 className="text-xl font-bold uppercase">{UserProfile.name}</h1>
                                             <p className="text-sm">@{UserProfile.username}</p>

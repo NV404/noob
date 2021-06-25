@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../../lib/auth'
 import { auth, db, storage } from '../../lib/firebase';
 import { useRouter } from 'next/router';
+import Image from 'next/image'
 
 export default function ProfileEdit(){
     const { user, logout } = useAuth();
@@ -101,19 +102,19 @@ export default function ProfileEdit(){
                 {/* header */}
                 <div className="flex justify-between items-center">
                     <div className="flex items-center">
-                        <Link href="/home"><a><img src="/logo.png" className="h-10 w-10"/></a></Link>
+                        <Link href="/home"><a><Image src="/logo.png" className="h-10 w-10"/></a></Link>
                         <p className="font-bold text-2xl pl-2">Edit Profile</p>
                     </div>
-                    <Link href={user.displayName}><a><img src="/cross.svg" /></a></Link>
+                    <Link href={user.displayName}><a><Image src="/cross.svg" /></a></Link>
                 </div>
                 {user ? 
                     <div className="mt-8">
                         <form>
                             <div className="mb-5">
                                 <div className="mb-5 flex justify-evenly items-center">
-                                    <img src={user.photoURL} className="rounded-lg h-20"/>
+                                    <Image src={user.photoURL} className="rounded-lg h-20"/>
                                     {ImagePreview ? <>
-                                        <img src={ImagePreview} className="rounded-lg h-20 w-20"/>
+                                        <Image src={ImagePreview} className="rounded-lg h-20 w-20"/>
                                     </> : null}
                                 </div>
                                 {/* If any image is selected it will change button Select button to save button */}
