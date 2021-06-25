@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useAuth } from '../../lib/auth'
 
-export default function Footer({active}){
+export default function footer({active}){
     const { user } = useAuth();
 
     return(

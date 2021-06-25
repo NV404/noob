@@ -8,9 +8,8 @@ import { useRouter } from 'next/router'
 import LoadingScreen from '../components/LoadingScreen'
 import Loader from '../components/Loader'
 import Link from 'next/link'
-import Image from 'next/image'
 
-export default function Search(){
+export default function search(){
     const { user, loading } = useAuth()
     const [term, setTerm] = useState(null)
     const [result, setResult] = useState(null)
@@ -74,7 +73,7 @@ export default function Search(){
                                                 <Link href={post.post.username}><a>
                                                     <div className="w-full my-6 py-6 px-6 text-white bg-gray-750 rounded-lg md:max-w-md">
                                                         <div className="flex justify-between">
-                                                            <Image src={post.post.profileimage} className="h-20 rounded-lg" />
+                                                            <img src={post.post.profileimage} className="h-20 rounded-lg" />
                                                             <div className="h-auto w-full text-center flex flex-col justify-center ">
                                                                 <h1 className="text-xl font-bold uppercase">{post.post.name}</h1>
                                                                 <p className="text-sm">@{post.post.username}</p>

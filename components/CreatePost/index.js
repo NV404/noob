@@ -1,12 +1,11 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../../lib/auth'
-import { db, storage } from '../../lib/firebase';
+import { auth, db, storage } from '../../lib/firebase';
 import firebase from "firebase/app";
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 
-export default function Createpost(){
+export default function createpost(){
     const {user} = useAuth()
     const [Caption, setCaption] = useState(null);
     const [Image, setImage] = useState(null)
@@ -100,10 +99,10 @@ export default function Createpost(){
             {/* header */}
             <div className="flex justify-between items-center">
                 <div className="flex items-center">
-                    <Link href="/home"><a><Image src="/logo.png" className="h-10 w-10"/></a></Link>
+                    <Link href="/home"><a><img src="/logo.png" className="h-10 w-10"/></a></Link>
                     <p className="font-bold text-2xl pl-2">Edit Profile</p>
                 </div>
-                <Link href="/home"><a><Image src="/cross.svg" /></a></Link>
+                <Link href="/home"><a><img src="/cross.svg" /></a></Link>
             </div>
 
             {/* Main Content */}
@@ -113,7 +112,7 @@ export default function Createpost(){
                         <div className="mb-5 flex justify-center items-center">
                             {/* image preview */}
                             {ImagePreview ? <>
-                                <Image src={ImagePreview} className="rounded-lg w-full"/>
+                                <img src={ImagePreview} className="rounded-lg w-full"/>
                             </> : null}
                         </div>
 
