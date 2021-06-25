@@ -5,6 +5,7 @@ import { useAuth } from '../lib/auth'
 import { db } from '../lib/firebase'
 import { useRouter } from 'next/router'
 import Loading from '../components/LoadingScreen/index'
+import Image from 'next/image'
 
 export default function Signup(){
     const { register, user, loading, errorMessage } = useAuth();
@@ -61,7 +62,7 @@ export default function Signup(){
                 <div className="w-screen h-screen flex justify-center items-center">
                     <div className="w-full h-full px-10 flex flex-col justify-evenly text-white bg-gray-850 md:max-w-2xl md:h-4/6 md:items-center md:rounded-lg">
                         <div className="md:w-4/6">
-                        <Link href="/"><a className="w-10"><img src="/logo.png" className="h-10 w-10" /></a></Link>
+                        <Link href="/"><a className="w-10"><Image src="/logo.png" className="h-10 w-10" /></a></Link>
                         <h1 className="font-bold text-4xl mt-5">Sign up</h1>
                         <form className="my-5" onSubmit={registeruser}>
                             <div>
