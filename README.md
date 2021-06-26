@@ -1,4 +1,4 @@
-![noob](https://socialify.git.ci/NV404/Noob/image?description=1&descriptionEditable=Simple%20Social-Media%20website%20build%20with%20Next%20Js%2C%20Tailwind%20css%20and%20Firebase%20&font=Rokkitt&forks=1&issues=1&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FNV404%2Fnoob%2Fmain%2Fpublic%2Flogo.png&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
+![noob](https://socialify.git.ci/NV404/Noob/image?description=1&descriptionEditable=Simple%20Social-Media%20website%20build%20with%20Next%20Js%2C%20Tailwind%20css%20and%20Firebase%20&font=Rokkitt&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FNV404%2Fnoob%2Fmain%2Fpublic%2Flogo.png&owner=1&pattern=Charlie%20Brown&theme=Dark)
 
 <h2 align=center>How to get started? </h2> 
 
