@@ -21,26 +21,22 @@ export default function Post({
 
     // get total like count
     useEffect(() => {
-        const getTotalLike = db.collection("posts")
+        db.collection("posts")
         .doc(id)
         .collection("likes")
         .doc("total")
         .onSnapshot((snap) => {
             setLikes(snap.data().count)
         });
-
-        return () => getTotalLike();
     },[])
 
     // get user information 
     useEffect(() => {
-        const getUserInfo = db.collection("users")
+        db.collection("users")
         .doc(username)
         .onSnapshot((snapshot) => {
             setProfileurl(snapshot.data().profileimage)
         });
-        
-        return () => getUserInfo();
     },[])
 
     // check if user liked this post already

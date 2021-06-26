@@ -10,18 +10,17 @@ export default function ProfileEdit(){
     const [name, setName] = useState(null)
     const [bio, setBio] = useState(null)
     const [image, setImage] = useState(null);
+    const [disable ,setdisable] = useState(false);
     const [ImagePreview, setImagePreview] = useState(null);
     const [Progress, setProgress] = useState(0);
     var randomstring = require("randomstring");
     const router = useRouter();
-    const [UserProfile, setUserProfile] = useState(null);
 
     useEffect(async () => {
         if (user) {
             db.collection("users")
                 .doc(user.displayName)
                 .onSnapshot((snapshot) => {
-                    setUserProfile(snapshot.data());
                     setName(snapshot.data().name)
                     setBio(snapshot.data().bio)
                 });
@@ -46,6 +45,7 @@ export default function ProfileEdit(){
     // Profile image update function
     const imageupload = (e) => {
         e.preventDefault();
+        setdisable(true)
         var randomtxt = randomstring.generate(10);
         var uploadTask = storage.ref(`ProfileImages/${randomtxt+image.name}`).put(image);
         uploadTask.on('state_changed',
@@ -78,6 +78,7 @@ export default function ProfileEdit(){
                         setProgress(0);
                         router.push(user.displayName);
                     })
+                    setdisable(true)
             },
             (error) => {
                 // Handle unsuccessful uploads
@@ -120,7 +121,7 @@ export default function ProfileEdit(){
                                 </div>
                                 {/* If any image is selected it will change button Select button to save button */}
                                 {ImagePreview ? 
-                                    <div onClick={imageupload} className="bg-purple-550 text-center rounded-lg py-3 font-semibold cursor-pointer">
+                                    <div disabled={disable} onClick={imageupload} className="bg-purple-550 text-center rounded-lg py-3 font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
                                         <label className="cursor-pointer">
                                             <p>Save</p>
                                         </label>

@@ -35,7 +35,10 @@ export default function Signup(){
                 console.log(error)
             });
             setregistershowerror(null);
-            router.push('/home')
+            if(user){
+                router.push('/home')
+            }
+            setdisable(false)
             }
             else{
                 setdisable(false);
@@ -81,7 +84,7 @@ export default function Signup(){
                         </form>
                         <div>
                             {registershowerror? registershowerror : null}
-                            {errorMessage ? <>{setdisable(false)}<p className='text-center text-red-700 font-bold'>{errorMessage}</p></> : null}
+                            {errorMessage ? <><p className='text-center text-red-700 font-bold'>{errorMessage}</p></> : null}
                         </div>
                         <Link href="/login"><a className="font-semibold underline text-center outline-none focus:text-purple-550"><p>Log in</p></a></Link>
                         </div>

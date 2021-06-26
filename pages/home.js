@@ -89,7 +89,7 @@ export default function Home(){
                 {user ? 
                     <div className="w-full flex flex-row justify-evenly">
                         {/* post section */}
-                        <div className="md:w-7/12">
+                        <div className="w-full md:w-7/12">
                             {/* upload post */}
                             <div className="py-8 md:max-w-3xl">
                                 <Link href="/home?CreatePost=true" as="/home"><a>
