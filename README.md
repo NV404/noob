@@ -13,7 +13,7 @@ You can refer to the following articles on **_basics of Git and Github and also 
 
 To get started, just clone the repository and run `npm install && npm run dev`:
 
-    git clone https://github.com/NV404/Emote.git
+    git clone https://github.com/NV404/noob.git
     npm install
     npm run dev
 
