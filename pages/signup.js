@@ -35,9 +35,6 @@ export default function Signup(){
                 console.log(error)
             });
             setregistershowerror(null);
-            if(user){
-                router.push('/home')
-            }
             setdisable(false)
             }
             else{

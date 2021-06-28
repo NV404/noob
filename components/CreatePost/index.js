@@ -101,7 +101,7 @@ export default function Createpost(){
             <div className="flex justify-between items-center">
                 <div className="flex items-center">
                     <Link href="/home"><a><div className="h-10 w-10 relative"><Image src="/logo.png" layout="fill"/></div></a></Link>
-                    <p className="font-bold text-2xl pl-2">Edit Profile</p>
+                    <p className="font-bold text-2xl pl-2">Create Post</p>
                 </div>
                 <Link href="/home"><a></a></Link>
             </div>
