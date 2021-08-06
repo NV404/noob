@@ -54,12 +54,19 @@ export default function Home(){
               UserDetail: doc.data(),
             }));
             setUserDetails(tempUsers);
+<<<<<<< HEAD
           });
 
           return () => {
             unsubscribe();
           };
       })
+=======
+    
+          });
+    
+      }, []);
+>>>>>>> master
 
 
       const postIndex = () => {
@@ -163,6 +170,7 @@ export default function Home(){
                           </div>
                           : null }
                         </div>
+<<<<<<< HEAD
                         // <>
                         // <div className="h-full w-full flex justify-center items-center p-8">
                         //   <div className="bg-gray-750 rounded-lg h-full w-full p-5 flex justify-center items-center">
@@ -174,11 +182,20 @@ export default function Home(){
                 <Model isOpen={!!router.query.CreatePost} className="Model" overlayClassName="Overlay">
                     <CreatePost/>
                 </Model>
+=======
+                : gotologin() }
+>>>>>>> master
                 </>
             }
 
             <Footer active="home"/>
         </div>
+<<<<<<< HEAD
+=======
+        <Model isOpen={!!router.query.CreatePost} className="Model" overlayClassName="Overlay">
+            <CreatePost/>
+        </Model>
+>>>>>>> master
         </>
     )
 }
