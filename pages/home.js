@@ -17,7 +17,7 @@ import Image from 'next/image'
 Model.setAppElement('#__next')
 
 export default function Home(){
-    const { user, loading } = useAuth();
+    const { user, loading, logout } = useAuth();
     const router = useRouter();
     const [PostDetails, setPostDetails] = useState(null);
     const [UserDetails, setUserDetails] = useState(null);
@@ -25,28 +25,20 @@ export default function Home(){
     const [checkstring, setcheckstring] = useState(null)
 
     useEffect(() => {
-      const unsubscribe = db.collection("posts")
-        .orderBy("timestamp", "desc")
-        .limit(5)
-        .onSnapshot((snapshot) => {
-          var lastVisible = snapshot.docs[snapshot.docs.length-1];
-          setlastVisible(lastVisible);
-          const tempPosts = snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }));
-          setPostDetails(tempPosts);
-        });
-        
-        return () => {
-          unsubscribe();
-        };
-
-      }, []);
-
-      useEffect(() => {
-        
-        const unsubscribe = db.collection("users")
+      db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .limit(5)
+      .onSnapshot((snapshot) => {
+        var lastVisible = snapshot.docs[snapshot.docs.length-1];
+        setlastVisible(lastVisible);
+        const tempPosts = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }));
+        setPostDetails(tempPosts);
+      });
+    
+        db.collection("users")
           .limit(5)
           .onSnapshot((snapshot) => {
             const tempUsers = snapshot.docs.map((doc) => ({
@@ -54,19 +46,10 @@ export default function Home(){
               UserDetail: doc.data(),
             }));
             setUserDetails(tempUsers);
-<<<<<<< HEAD
-          });
-
-          return () => {
-            unsubscribe();
-          };
-      })
-=======
     
           });
     
       }, []);
->>>>>>> master
 
 
       const postIndex = () => {
@@ -170,32 +153,15 @@ export default function Home(){
                           </div>
                           : null }
                         </div>
-<<<<<<< HEAD
-                        // <>
-                        // <div className="h-full w-full flex justify-center items-center p-8">
-                        //   <div className="bg-gray-750 rounded-lg h-full w-full p-5 flex justify-center items-center">
-                        //     <p className="text-2xl font-bold text-white">Thank you for your support<br/> this website just hit firebase limit. website will be back in some time</p>
-                        //   </div>
-                        // </div> 
-                        // </> 
                 : gotologin() }
-                <Model isOpen={!!router.query.CreatePost} className="Model" overlayClassName="Overlay">
-                    <CreatePost/>
-                </Model>
-=======
-                : gotologin() }
->>>>>>> master
                 </>
             }
 
             <Footer active="home"/>
         </div>
-<<<<<<< HEAD
-=======
         <Model isOpen={!!router.query.CreatePost} className="Model" overlayClassName="Overlay">
             <CreatePost/>
         </Model>
->>>>>>> master
         </>
     )
 }
